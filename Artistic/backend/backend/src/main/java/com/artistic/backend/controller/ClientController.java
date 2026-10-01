@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.artistic.backend.model.User;
-import com.artistic.backend.service.UserService;
+import com.artistic.backend.model.Client;
+import com.artistic.backend.service.ClientService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/clients")
+public class ClientController {
 
-    private final UserService userService;
+    private final ClientService clientService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public ClientController(ClientService clientService) {
+        this.clientService = clientService;
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public Client createClient(@RequestBody Client client) {
+        return clientService.createClient(client);
     }
 
     @GetMapping
-    public List<User> getUsers() {
-        return userService.getAllUsers();
+    public List<Client> getClients() {
+        return clientService.getAllClients();
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUserById(@PathVariable String id) {
-        return userService.getUserById(id);
+    public Optional<Client> getClientById(@PathVariable String id) {
+        return clientService.getClientById(id);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable String id) {
-        userService.deleteUser(id);
+    public void deleteClient(@PathVariable String id) {
+        clientService.deleteClient(id);
     }
 }

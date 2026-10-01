@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.artistic.backend.model.User;
-import com.artistic.backend.service.UserService;
+import com.artistic.backend.model.Artist;
+import com.artistic.backend.service.ArtistService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/artists")
+public class ArtistController {
 
-    private final UserService userService;
+    private final ArtistService artistService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public ArtistController(ArtistService artistService) {
+        this.artistService = artistService;
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public Artist createArtist(@RequestBody Artist artist) {
+        return artistService.createArtist(artist);
     }
 
     @GetMapping
-    public List<User> getUsers() {
-        return userService.getAllUsers();
+    public List<Artist> getArtists() {
+        return artistService.getAllArtists();
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUserById(@PathVariable String id) {
-        return userService.getUserById(id);
+    public Optional<Artist> getArtistById(@PathVariable String id) {
+        return artistService.getArtistById(id);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable String id) {
-        userService.deleteUser(id);
+    public void deleteArtist(@PathVariable String id) {
+        artistService.deleteArtist(id);
     }
 }
