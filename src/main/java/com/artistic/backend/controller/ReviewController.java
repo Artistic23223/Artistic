@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.artistic.backend.model.User;
-import com.artistic.backend.service.UserService;
+import com.artistic.backend.model.Review;
+import com.artistic.backend.service.ReviewService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/reviews")
+public class ReviewController {
 
-    private final UserService userService;
+    private final ReviewService reviewService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public ReviewController(ReviewService reviewService) {
+        this.reviewService = reviewService;
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public Review createReview(@RequestBody Review review) {
+        return reviewService.createReview(review);
     }
 
     @GetMapping
-    public List<User> getUsers() {
-        return userService.getAllUsers();
+    public List<Review> getReviews() {
+        return reviewService.getAllReviews();
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUserById(@PathVariable String id) {
-        return userService.getUserById(id);
+    public Optional<Review> getReviewById(@PathVariable String id) {
+        return reviewService.getReviewById(id);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable String id) {
-        userService.deleteUser(id);
+    public void deleteReview(@PathVariable String id) {
+        reviewService.deleteReview(id);
     }
 }

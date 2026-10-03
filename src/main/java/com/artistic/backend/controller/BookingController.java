@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.artistic.backend.model.User;
-import com.artistic.backend.service.UserService;
+import com.artistic.backend.model.Booking;
+import com.artistic.backend.service.BookingService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/bookings")
+public class BookingController {
 
-    private final UserService userService;
+    private final BookingService bookingService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public BookingController(BookingService bookingService) {
+        this.bookingService = bookingService;
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public Booking createBooking(@RequestBody Booking booking) {
+        return bookingService.createBooking(booking);
     }
 
     @GetMapping
-    public List<User> getUsers() {
-        return userService.getAllUsers();
+    public List<Booking> getBookings() {
+        return bookingService.getAllBookings();
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUserById(@PathVariable String id) {
-        return userService.getUserById(id);
+    public Optional<Booking> getBookingById(@PathVariable String id) {
+        return bookingService.getBookingById(id);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable String id) {
-        userService.deleteUser(id);
+    public void deleteBooking(@PathVariable String id) {
+        bookingService.deleteBooking(id);
     }
 }
